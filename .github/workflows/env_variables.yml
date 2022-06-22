@@ -1,0 +1,25 @@
+name: env_variables
+env:
+  WORKSPACE_ENVIRONMENT_VARIABLE: 'Workspace Environment Variable'
+  OVER_RIDE: 'Workflow'
+on: [push]
+jobs:
+  ubuntu:
+    env:
+      JOB_ENVIRONMENT_VARIABLE: 'Job environment variable'
+      OVER_RIDE: 'Job'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print custom variables from ubuntu-latest
+        env:
+          STEP_ENVIRONMENT_VARIABLE: 'Step environment variable'
+          OVER_RIDE: 'step'
+        run: |
+          echo "Accessing env variables"
+          echo "1. $WORKSPACE_ENVIRONMENT_VARIABLE"
+          echo "2. $JOB_ENVIRONMENT_VARIABLE"
+          echo "3. $STEP_ENVIRONMENT_VARIABLE"
+          echo "4. $OVER_RIDE"
+          echo ""
+          echo "==========================="
+          
